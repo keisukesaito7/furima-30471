@@ -20,17 +20,17 @@
 
 ## itemsテーブル
 
-| Column              | Type        | Option            |
-| ------------------- | ----------- | ----------------- |
-| name                | string      | null: false       |
-| info                | text        | null: false       |
-| category            | integer     | null: false       |
-| sales_status        | integer     | null: false       |
-| shipping_fee_status | integer     | null: false       |
-| prefecture          | integer     | null: false       |
-| scheduled_delivery  | integer     | null: false       |
-| price               | integer     | null: false       |
-| user_id             | references  | foreign_key: true |
+| Column                 | Type        | Option            |
+| ---------------------- | ----------- | ----------------- |
+| name                   | string      | null: false       |
+| info                   | text        | null: false       |
+| category_id            | integer     | null: false       |
+| sales_status_id        | integer     | null: false       |
+| shipping_fee_status_id | integer     | null: false       |
+| prefecture_id          | integer     | null: false       |
+| scheduled_delivery_id  | integer     | null: false       |
+| price                  | integer     | null: false       |
+| user                   | references  | foreign_key: true |
 
 ### association
 
@@ -41,8 +41,8 @@
 
 | Column  | Type       | Option            |
 | ------- | ---------- | ----------------- |
-| user_id | references | foreign_key :true |
-| item_id | references | foreign_key :true |
+| user    | references | foreign_key :true |
+| item    | references | foreign_key :true |
 
 ### association
 
@@ -52,15 +52,15 @@
 
 ## shipping_addressesテーブル
 
-| Column       | Type        | Option            |
-| ------------ | ----------- | ----------------- |
-| postal_code  | string      | null: false       |
-| prefecture   | integer     | null: false       |
-| city         | string      | null: false       |
-| addresses    | string      | null: false       |
-| building     | string      |                   |
-| phone_number | string      | null: false       |
-| order_id     | integer     | foreign_key :true |
+| Column          | Type        | Option            |
+| --------------- | ----------- | ----------------- |
+| postal_code     | string      | null: false       |
+| prefecture_id   | integer     | null: false       |
+| city            | string      | null: false       |
+| addresses       | string      | null: false       |
+| building        | string      |                   |
+| phone_number    | string      | null: false       |
+| order           | references  | foreign_key :true |
 
 ### association
 
