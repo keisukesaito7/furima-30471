@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :scheduled_delivery
 
+  validates :image,               presence: true
   validates :name,                presence: true
   validates :info,                presence: true
   validates :category,            presence: true
@@ -15,14 +16,15 @@ class Item < ApplicationRecord
   validates :shipping_fee_status, presence: true
   validates :prefecture,          presence: true
   validates :scheduled_delivery,  presence: true
-  validates :price,               presence: true
-  validates :image,               presence: true
-  #¥300 ~ ¥9,999,999 の制限は後から
-  # inclusion: { in: 300..9999999 }
 
-  validates :category_id,            numericality: { other_than: 1 }
-  validates :sales_status_id,        numericality: { other_than: 1 }
-  validates :shipping_fee_status_id, numericality: { other_than: 1 }
-  validates :prefecture_id,          numericality: { other_than: 1 }
-  validates :scheduled_delivery_id,  numericality: { other_than: 1 }
+  validates :category_id,            numericality: { other_than: 1, message: "Select" }
+  validates :sales_status_id,        numericality: { other_than: 1, message: "Select" }
+  validates :shipping_fee_status_id, numericality: { other_than: 1, message: "Select" }
+  validates :prefecture_id,          numericality: { other_than: 1, message: "Select" }
+  validates :scheduled_delivery_id,  numericality: { other_than: 1, message: "Select" }
+
+  half_width_number = /\A[0-9]+\z/
+  validates :price, presence: true
+  validates :price, format: { with: half_width_number, message: "Half-width number" }
+  validates :price, inclusion: { in: 300..9999999, message: "Out of setting range" }
 end
