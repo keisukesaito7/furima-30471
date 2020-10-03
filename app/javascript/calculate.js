@@ -9,7 +9,7 @@ function calculate() {
     taxPrice.innerHTML = changedTaxPrice;
     const changedProfit = price.value - changedTaxPrice;
     profit.innerHTML = changedProfit;
-  })
+  });
 }
 
-window.addEventListener("load", calculate)
+window.addEventListener("load", calculate);
