@@ -34,10 +34,22 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Info can't be blank")
     end
 
+    it 'categoryが空だと保存できない' do
+      @item.category = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category can't be blank")
+    end
+
     it 'categoryが選択されていないと保存できない' do
       @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Category Select')
+    end
+
+    it 'sales_statusが空だと保存できない' do
+      @item.sales_status = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Sales status can't be blank")
     end
 
     it 'sales_statusが選択されていないと保存できない' do
@@ -46,16 +58,34 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Sales status Select')
     end
 
+    it 'shipping_fee_statusが空だと保存できない' do
+      @item.shipping_fee_status = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shipping fee status can't be blank")
+    end
+
     it 'shipping_fee_statusが選択されていないと保存できない' do
       @item.shipping_fee_status_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Shipping fee status Select')
     end
 
+    it 'prefectureが空だと保存できない' do
+      @item.prefecture = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+    end
+
     it 'prefectureが選択されていないと保存できない' do
       @item.prefecture_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Prefecture Select')
+    end
+
+    it 'scheduled_deliveryが空だと保存できない' do
+      @item.scheduled_delivery = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank")
     end
 
     it 'scheduled_deliveryが選択されていないと保存できない' do
@@ -70,14 +100,20 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Price can't be blank")
     end
 
-    it 'priceを半角数字で入力しないと保存されない' do
+    it 'priceを半角数字で入力しないと保存できない' do
       @item.price = 'number'
       @item.valid?
       expect(@item.errors.full_messages).to include('Price must be Half-width number')
     end
 
-    it 'priceが半角数字でも300~9,999,999の範囲外だと保存されない' do
+    it 'priceが300未満の場合は保存できない' do
       @item.price = 299
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Price is Out of setting range')
+    end
+
+    it 'priceが10,000,000以上の場合は保存できない' do
+      @item.price = 10_000_000
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is Out of setting range')
     end
