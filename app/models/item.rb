@@ -23,8 +23,7 @@ class Item < ApplicationRecord
   validates :prefecture_id,          numericality: { other_than: 1, message: "Select" }
   validates :scheduled_delivery_id,  numericality: { other_than: 1, message: "Select" }
 
-  half_width_number = /\A[0-9]+\z/
   validates :price, presence: true
-  validates :price, format: { with: half_width_number, message: "Half-width number" }
+  validates :price, numericality: { message: "Half-width number" }
   validates :price, inclusion: { in: 300..9999999, message: "Out of setting range" }
 end
