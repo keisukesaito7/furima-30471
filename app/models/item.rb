@@ -24,6 +24,6 @@ class Item < ApplicationRecord
   validates :scheduled_delivery_id,  numericality: { other_than: 1, message: "Select" }
 
   validates :price, presence: true
-  validates :price, numericality: { message: "Half-width number" }
-  validates :price, inclusion: { in: 300..9999999, message: "Out of setting range" }
+  validates :price, numericality: { message: "must be Half-width number" }
+  validates :price, inclusion: { in: 300..9999999, message: "is Out of setting range" }
 end
