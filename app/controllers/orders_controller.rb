@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: :new
+  before_action :set_item, only: [:new, :create]
   before_action :redirect_to_root_path, only: :new
 
   def new
-    @item = Item.find(params[:item_id])
     @order = ItemOrder.new
   end
 
@@ -22,9 +22,12 @@ class OrdersController < ApplicationController
     params.require(:item_order).permit(:postal_code, :prefecture_id, :city, :addresses, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def redirect_to_root_path
-    item = Item.find(params[:item_id])
-    if current_user.id == item.user.id || item.order
+    if current_user.id == @item.user.id || @item.order
       redirect_to root_path
     end
   end
