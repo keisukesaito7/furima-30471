@@ -16,7 +16,7 @@ class User < ApplicationRecord
     validates :last_name_kana,  format: { with: zenkaku_kana }
     validates :birth_date,      format: { with: birthday }
   end
-  validates :password,          format: { with: eng_num }
+  validates :password, format: { with: eng_num }
 
   has_many :items
   has_many :orders
