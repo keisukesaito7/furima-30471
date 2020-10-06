@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!, only: [:new, :create]
   before_action :set_item, only: [:new, :create]
-  before_action :redirect_to_root_path, only: :new
+  before_action :redirect_to_root_path, only: [:new, :create]
 
   def new
     @order = ItemOrder.new
