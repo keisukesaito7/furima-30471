@@ -1,0 +1,13 @@
+<%= render "shared/second-header"%>
+
+<div class='user-nickname'>
+  <%= @user.nickname %>
+</div>
+<div class='email'>
+  <%= @user.email %>
+</div>
+<div class='name'>
+  <%= "#{@user.last_name} #{@user.first_name}" %>
+</div>
+
+<%= render "shared/second-footer"%>
