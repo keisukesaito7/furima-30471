@@ -24,6 +24,11 @@ app/assets/stylesheets/items/new.css %>
         <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
+    <div id='image-preview'>
+      <div id='insert-field'>
+        <%= image_tag(@item.image, height: '200px') %>
+      </div>
+    </div>
     <%# /出品画像 %>
     <%# 商品名と商品説明 %>
     <div class="new-items">
