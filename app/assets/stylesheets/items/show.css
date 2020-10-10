@@ -147,9 +147,15 @@
   text-align: center;
 }
 
-.comment-text {
+.comment-title {
+  display: block;
+  font-size: 18px;
+  margin: 10px 0px;
+}
+
+.comment-area {
   width: 100%;
-  height: 100px;
+  height: 75px;
   padding: 10px;
   border: solid 2px #dedede;
   resize: none;
