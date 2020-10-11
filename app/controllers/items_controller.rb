@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_comments, only: [:show]
   before_action :redirect_to_root_path, only: [:edit, :update]
 
   def index
@@ -22,8 +23,8 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments_latest3 = @item.comments.order('created_at DESC').first(3)
-    @comments_offset3 = @item.comments.order('created_at DESC').offset(3)
+    @comments_latest3 = @item_comments.first(3)
+    @comments_offset3 = @item_comments.offset(3)
   end
 
   def edit
@@ -53,6 +54,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_comments
+    @item_comments = @item.comments.includes(:user).order('created_at DESC')
   end
 
   def redirect_to_root_path
