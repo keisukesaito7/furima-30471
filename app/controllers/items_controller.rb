@@ -22,6 +22,9 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new
+    # @comments = Comment.all.order('created_at DESC')
+    @comments_latest3 = Comment.order('created_at DESC').first(3)
+    @comments_offset3 = Comment.all.order('created_at DESC').offset(3)
   end
 
   def edit

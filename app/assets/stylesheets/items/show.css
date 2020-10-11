@@ -137,11 +137,20 @@
   margin-right: 5px;
 }
 
-
 /* /商品の概要 */
 
-.comment-box {
-  width: 40vw;
+/* コメントフォーム＆コメント一覧 */
+.comment-wrap {
+  background-color: #fff;
+  width: 70vw;
+  min-width: 1200px;
+  margin: 5vh 0;
+  display: flex;
+  justify-content: center;
+}
+
+.comment-container {
+  width: 50vw;
   background-color: #fff;
   margin: 5vh 0;
   text-align: center;
@@ -155,7 +164,7 @@
 
 .comment-area {
   width: 100%;
-  height: 75px;
+  height: 80px;
   padding: 10px;
   border: solid 2px #dedede;
   resize: none;
@@ -193,7 +202,6 @@
   display: flex;
   justify-content: space-between;
   width: 50vw;
-
 }
 
 .change-item-btn {
@@ -209,4 +217,38 @@
   text-decoration: none;
   font-weight: bold;
   font-size: 23px;
+}
+
+/* コメント一覧表示欄 */
+#comment-lists {
+  /* background-color: skyblue; */
+  padding: 5px;
+}
+
+summary {
+  margin: 0 auto;
+  width: 50%;
+  min-width: 150px;
+  border: 1px solid lightgray;
+}
+
+.comment-box {
+  border-radius: 5px;
+  background-color: whitesmoke;
+  margin: 10px 0px;
+  padding: 10px;
+}
+
+.comment-info {
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.comment-user {
+  margin-right: 5px;
+}
+
+.comment-text {
+  text-align: left;
 }

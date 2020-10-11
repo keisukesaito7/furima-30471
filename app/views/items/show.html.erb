@@ -78,24 +78,35 @@
   <%# /商品の概要 %>
 
   <%# コメントフォーム自作 %>
-  <div class="comment-box">
-    <%# ここに、コメント一覧を表示 %>
-    <%# /ここに、コメント一覧を表示 %>
-    <% if user_signed_in? %>
-      <%= form_with model:@comment, url: item_comments_path(@item), local: true do |f| %>
-        <%= f.label :text, 'コメントはこちらから', class: 'comment-title' %>
-        <%= f.text_area :text, class: 'comment-area', placeholder: '100字以内で入力してください', maxlength: '100' %>
-        <p class="comment-warn">
-          相手のことを考え丁寧なコメントを心がけましょう。
-          <br>
-          不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        </p>
-        <button type="submit" class="comment-btn">
-          <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-          <span>コメントする<span>
-        </button>
+  <div class="comment-wrap">
+    <div class="comment-container">
+      <% if user_signed_in? %>
+        <%= form_with model: @comment, url: item_comments_path(@item) do |f| %>
+          <%= f.label :text, 'コメントはこちらから', class: 'comment-title' %>
+          <%= f.text_area :text, class: 'comment-area', placeholder: '100字以内で入力してください', maxlength: '100' %>
+          <p class="comment-warn">
+            相手のことを考え丁寧なコメントを心がけましょう。
+            <br>
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          </p>
+          <button type="submit" class="comment-btn">
+            <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+            <span>コメントする<span>
+          </button>
+        <% end %>
       <% end %>
-    <% end %>
+      <%# ここに、コメント一覧を表示 %>
+      <div id="comment-lists">
+        <%= render partial: 'shared/comment', collection: @comments_latest3 %>
+        <%# 残りのコメントを表示 %>
+        <details>
+          <summary>全てのコメントを表示</summary>
+            <%= render partial: 'shared/comment', collection: @comments_offset3 %>
+        </details>
+        <%# /残りのコメントを表示 %>
+      </div>
+      <%# /ここに、コメント一覧を表示 %>
+    </div>
   </div>
   <%# /コメントフォーム自作 %>
 
