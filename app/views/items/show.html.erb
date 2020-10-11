@@ -98,12 +98,16 @@
       <%# ここに、コメント一覧を表示 %>
       <div id="comment-lists">
         <%= render partial: 'shared/comment', collection: @comments_latest3 %>
-        <%# 残りのコメントを表示 %>
-        <details>
-          <summary>全てのコメントを表示</summary>
-            <%= render partial: 'shared/comment', collection: @comments_offset3 %>
-        </details>
-        <%# /残りのコメントを表示 %>
+        <%# コメントが4件未満の場合はここから表示しない %>
+        <% if @comments_offset3 != [] %>
+          <%# 残りのコメントを表示 %>
+          <details>
+            <summary>全てのコメントを表示</summary>
+              <%= render partial: 'shared/comment', collection: @comments_offset3 %>
+          </details>
+          <%# /残りのコメントを表示 %>
+        <% end %>
+        <%# /コメント4件未満の場合は表示しない %>
       </div>
       <%# /ここに、コメント一覧を表示 %>
     </div>
