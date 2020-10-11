@@ -242,11 +242,14 @@ summary {
 .comment-info {
   display: flex;
   font-size: 14px;
+  color: gray;
   margin-bottom: 5px;
 }
 
 .comment-user {
   margin-right: 5px;
+  padding-right: 5px;
+  border-right: 1px solid gray;
 }
 
 .comment-text {
