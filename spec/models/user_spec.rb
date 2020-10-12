@@ -21,14 +21,14 @@ RSpec.describe User, type: :model do
       @user.email = nil
       @user.valid?
       # expect(@user.errors.full_messages).to include("Email can't be blank")
-      expect(@user.errors.full_messages).to include("Eメールを入力してください")
+      expect(@user.errors.full_messages).to include("メールアドレスを入力してください")
     end
 
     it 'emailに@がないと保存できない' do
       @user.email = 'aaa'
       @user.valid?
       # expect(@user.errors.full_messages).to include('Email is invalid')
-      expect(@user.errors.full_messages).to include('Eメールは不正な値です')
+      expect(@user.errors.full_messages).to include('メールアドレスは不正な値です')
     end
 
     it 'emailが重複していると保存できない' do
@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
       @user.save
       another_user.valid?
       # expect(another_user.errors.full_messages).to include('Email has already been taken')
-      expect(another_user.errors.full_messages).to include('Eメールはすでに存在します')
+      expect(another_user.errors.full_messages).to include('メールアドレスはすでに存在します')
     end
 
     it 'passwordが空だと保存できない' do
