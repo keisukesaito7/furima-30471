@@ -13,25 +13,26 @@ RSpec.describe Comment, type: :model do
     it 'textが空だと保存できない' do
       @comment.text = nil
       @comment.valid?
-      expect(@comment.errors.full_messages).to include("Text can't be blank")
+      # expect(@comment.errors.full_messages).to include("Text can't be blank")
+      expect(@comment.errors.full_messages).to include("コメントを入力してください")
     end
 
     it 'textが101文字以上だと保存できない' do
       @comment.text = Faker::Lorem.characters(number: 101)
       @comment.valid?
-      expect(@comment.errors.full_messages).to include('Text is too long (maximum is 100 characters)')
+      expect(@comment.errors.full_messages).to include('コメントは100文字以内で入力してください')
     end
 
     it 'userが紐づいていなければ保存できない' do
       @comment.user = nil
       @comment.valid?
-      expect(@comment.errors.full_messages).to include('User must exist')
+      expect(@comment.errors.full_messages).to include('ユーザーを入力してください')
     end
 
     it 'itemが紐づいていなければ保存できない' do
       @comment.item = nil
       @comment.valid?
-      expect(@comment.errors.full_messages).to include('Item must exist')
+      expect(@comment.errors.full_messages).to include('商品を入力してください')
     end
   end
 end

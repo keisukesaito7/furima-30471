@@ -27,4 +27,7 @@ ja:
         scheduled_delivery_id: 発送までの日数
         price: 販売価格
         user: ユーザー
-  
+      comment:
+        text: コメント
+        user: ユーザー
+        item: 商品
