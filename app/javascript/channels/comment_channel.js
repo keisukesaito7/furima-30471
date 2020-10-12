@@ -10,11 +10,23 @@ consumer.subscriptions.create("CommentChannel", {
   },
 
   received(data) {
+    function formatDate (date, format) {
+      format = format.replace(/yyyy/g, date.getFullYear());
+      format = format.replace(/MM/g, ('0' + (date.getMonth() + 1)).slice(-2));
+      format = format.replace(/dd/g, ('0' + date.getDate()).slice(-2));
+      format = format.replace(/HH/g, ('0' + date.getHours()).slice(-2));
+      format = format.replace(/mm/g, ('0' + date.getMinutes()).slice(-2));
+      return format;
+    };
+
+    const convertDate = new Date(data.comment.created_at);
+    const reFormatDate = formatDate(convertDate, 'yyyy/MM/dd HH:mm');
+
     const html = `
       <div class="comment-box">
         <div class="comment-info">
           <p class="comment-user">${data.user.nickname}</p>
-          <p class="comment-time">${data.comment.created_at}</p>
+          <p class="comment-time">${reFormatDate}</p>
         </div>
         <p class="comment-text">${data.comment.text}</p>
       </div>
