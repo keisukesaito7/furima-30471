@@ -21,28 +21,28 @@ RSpec.describe Item, type: :model do
       @item.image = nil
       @item.valid?
       # expect(@item.errors.full_messages).to include("Image can't be blank")
-      expect(@item.errors.full_messages).to include("画像を選択してください")
+      expect(@item.errors.full_messages).to include('画像を選択してください')
     end
 
     it 'nameが空だと保存できない' do
       @item.name = nil
       @item.valid?
       # expect(@item.errors.full_messages).to include("Name can't be blank")
-      expect(@item.errors.full_messages).to include("商品名を入力してください")
+      expect(@item.errors.full_messages).to include('商品名を入力してください')
     end
 
     it 'infoが空だと保存できない' do
       @item.info = nil
       @item.valid?
       # expect(@item.errors.full_messages).to include("Info can't be blank")
-      expect(@item.errors.full_messages).to include("商品の説明を入力してください")
+      expect(@item.errors.full_messages).to include('商品の説明を入力してください')
     end
 
     it 'categoryが空だと保存できない' do
       @item.category = nil
       @item.valid?
       # expect(@item.errors.full_messages).to include("Category can't be blank")
-      expect(@item.errors.full_messages).to include("カテゴリーを入力してください")
+      expect(@item.errors.full_messages).to include('カテゴリーを入力してください')
     end
 
     it 'categoryが選択されていないと保存できない' do
@@ -56,7 +56,7 @@ RSpec.describe Item, type: :model do
       @item.sales_status = nil
       @item.valid?
       # expect(@item.errors.full_messages).to include("Sales status can't be blank")
-      expect(@item.errors.full_messages).to include("商品の状態を入力してください")
+      expect(@item.errors.full_messages).to include('商品の状態を入力してください')
     end
 
     it 'sales_statusが選択されていないと保存できない' do
@@ -70,7 +70,7 @@ RSpec.describe Item, type: :model do
       @item.shipping_fee_status = nil
       @item.valid?
       # expect(@item.errors.full_messages).to include("Shipping fee status can't be blank")
-      expect(@item.errors.full_messages).to include("配送料の負担を入力してください")
+      expect(@item.errors.full_messages).to include('配送料の負担を入力してください')
     end
 
     it 'shipping_fee_statusが選択されていないと保存できない' do
@@ -84,7 +84,7 @@ RSpec.describe Item, type: :model do
       @item.prefecture = nil
       @item.valid?
       # expect(@item.errors.full_messages).to include("Prefecture can't be blank")
-      expect(@item.errors.full_messages).to include("発送元の地域を入力してください")
+      expect(@item.errors.full_messages).to include('発送元の地域を入力してください')
     end
 
     it 'prefectureが選択されていないと保存できない' do
@@ -98,7 +98,7 @@ RSpec.describe Item, type: :model do
       @item.scheduled_delivery = nil
       @item.valid?
       # expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank")
-      expect(@item.errors.full_messages).to include("発送までの日数を入力してください")
+      expect(@item.errors.full_messages).to include('発送までの日数を入力してください')
     end
 
     it 'scheduled_deliveryが選択されていないと保存できない' do
@@ -112,7 +112,7 @@ RSpec.describe Item, type: :model do
       @item.price = nil
       @item.valid?
       # expect(@item.errors.full_messages).to include("Price can't be blank")
-      expect(@item.errors.full_messages).to include("販売価格を入力してください")
+      expect(@item.errors.full_messages).to include('販売価格を入力してください')
     end
 
     it 'priceを半角数字で入力しないと保存できない' do
