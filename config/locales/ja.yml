@@ -2,3 +2,12 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        first_name: 名前
+        last_name: 名字
+        first_name_kana: 名前（カナ）
+        last_name_kana: 名字（カナ）
+        birth_date: 生年月日
