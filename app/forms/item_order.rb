@@ -7,7 +7,7 @@ class ItemOrder
     validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください' }
     validates :city
     validates :addresses
-    validates :phone_number, format: { with: /\A\d{,11}\z/ }
+    validates :phone_number, format: { with: /\A\d{,11}\z/, message: 'を正しく入力してください' }
     validates :user_id
     validates :item_id
     validates :token
