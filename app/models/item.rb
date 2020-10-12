@@ -10,8 +10,8 @@ class Item < ApplicationRecord
   has_one                :order
   has_many               :comments, dependent: :destroy
 
+  validates :image, presence: { message: 'を選択してください' }
   with_options presence: true do
-    validates :image
     validates :name
     validates :info
     validates :category
@@ -21,7 +21,7 @@ class Item < ApplicationRecord
     validates :scheduled_delivery
   end
 
-  with_options numericality: { other_than: 1, message: 'Select' } do
+  with_options numericality: { other_than: 1, message: 'を選択してください' } do
     validates :category_id
     validates :sales_status_id
     validates :shipping_fee_status_id
@@ -30,6 +30,6 @@ class Item < ApplicationRecord
   end
 
   validates :price, presence: true
-  validates :price, numericality: { message: 'must be Half-width number' }
-  validates :price, inclusion: { in: 300..9_999_999, message: 'is Out of setting range' }
+  validates :price, numericality: { message: 'は半角数字で入力してください' }
+  validates :price, inclusion: { in: 300..9_999_999, message: 'は ¥300〜¥9,999,999の間に設定してください' }
 end

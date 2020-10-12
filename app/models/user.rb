@@ -10,13 +10,13 @@ class User < ApplicationRecord
   birthday = /\A\d{4}-\d{2}-\d{2}\z/
   with_options presence: true do
     validates :nickname
-    validates :first_name,      format: { with: zenkaku }
-    validates :last_name,       format: { with: zenkaku }
-    validates :first_name_kana, format: { with: zenkaku_kana }
-    validates :last_name_kana,  format: { with: zenkaku_kana }
+    validates :first_name,      format: { with: zenkaku, message: 'は全角で入力してください' }
+    validates :last_name,       format: { with: zenkaku, message: 'は全角で入力してください' }
+    validates :first_name_kana, format: { with: zenkaku_kana, message: 'は全角（カナ）で入力してください' }
+    validates :last_name_kana,  format: { with: zenkaku_kana, message: 'は全角（カナ）で入力してください' }
     validates :birth_date,      format: { with: birthday }
   end
-  validates :password, format: { with: eng_num }
+  validates :password, format: { with: eng_num, message: 'は英数字混合で入力してください' }
 
   has_many :items
   has_many :orders

@@ -2,3 +2,47 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        first_name: 名前
+        last_name: 名字
+        first_name_kana: 名前（カナ）
+        last_name_kana: 名字（カナ）
+        birth_date: 生年月日
+      item:
+        image: 画像
+        name: 商品名
+        info: 商品の説明
+        category: カテゴリー
+        category_id: カテゴリー
+        sales_status: 商品の状態
+        sales_status_id: 商品の状態
+        shipping_fee_status: 配送料の負担
+        shipping_fee_status_id: 配送料の負担
+        prefecture: 発送元の地域
+        prefecture_id: 発送元の地域
+        scheduled_delivery: 発送までの日数
+        scheduled_delivery_id: 発送までの日数
+        price: 販売価格
+        user: ユーザー
+      comment:
+        text: コメント
+        user: ユーザー
+        item: 商品
+  activemodel:
+    attributes:
+      item_order:
+        postal_code: 郵便番号
+        prefecture: 都道府県
+        prefecture_id: 都道府県
+        city: 市区町村
+        addresses: 番地
+        building: 建物名
+        phone_number: 電話番号
+        user_id: ユーザー
+        item_id: 商品
+        token: クレジットカード情報
+
+
