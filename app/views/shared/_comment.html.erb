@@ -3,5 +3,5 @@
     <p class="comment-user"><%= comment.user.nickname %></p>
     <p class="comment-time"><%= l comment.created_at %></p>
   </div>
-  <p><%= simple_format(comment.text) %></p>
+  <p><%= simple_format(h(comment.text)) %></p>
 </div>
