@@ -237,6 +237,7 @@ summary {
   background-color: whitesmoke;
   margin: 10px 0px;
   padding: 10px;
+  text-align: left;
 }
 
 .comment-info {
@@ -250,8 +251,4 @@ summary {
   margin-right: 5px;
   padding-right: 5px;
   border-right: 1px solid gray;
-}
-
-.comment-text {
-  text-align: left;
 }
