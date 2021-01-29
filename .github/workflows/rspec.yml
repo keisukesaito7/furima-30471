@@ -23,7 +23,7 @@ jobs:
       with:
         ruby-version: 2.6.5
         bundler-cache: true
-    - name: Run tests
+    - name: Setup Ruby
       run: |
         gem install bundler:2.1.4
         bundle install --quiet --jobs 4 --retry 3
