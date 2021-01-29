@@ -49,6 +49,7 @@ jobs:
       with:
         status: ${{ job.status }}
         fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+        author_name: 変更がpushされました！
       env:
         GITHUB_TOKEN: ${{ github.token }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
