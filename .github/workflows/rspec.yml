@@ -1,11 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
-# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
-
-name: Ruby
+name: RSpec
 
 on:
   push:
@@ -15,21 +8,31 @@ on:
 
 jobs:
   test:
-    
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby: [2.6]
-
+    services:
+      mysql:
+        image: mysql:5.6
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: root
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6.5
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        bundler-cache: true
     - name: Run tests
       run: |
         gem install bundler:2.1.4
         bundle install --quiet --jobs 4 --retry 3
-        bundle exec rspec
+    - name: Setup Database
+      env:
+        RAILS_ENV: test
+      run: |
+        cp config/database_ci.yml config/database.yml
+        ./bin/rails db:create
+        ./bin/rails db:migrate
+    - name: Run tests
+      run: bundle exec rspec
